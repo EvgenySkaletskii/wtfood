@@ -15,7 +15,11 @@
       <p><%= @recipe.body%></p>
     </div>
     <div class="col-sm-4">
-      <%= image_tag "food", class: "w-100"%>
+      <% if @recipe.image %>
+        <%= image_tag @recipe.image_url, class: "w-100 rounded"%>
+      <%else%>
+        <%= image_tag "food", class: "w-100 rounded"%>
+      <%end%>
     </div>
   </div>
 </div>
