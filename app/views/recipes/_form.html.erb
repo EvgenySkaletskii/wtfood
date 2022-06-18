@@ -1,8 +1,10 @@
 <%= simple_form_for @recipe do |f| %>
   <div class="w-50">
-    <div class="field">
-      <%= f.label :image %>
-      <%= f.file_field :image %>
+    <div class="mb-3">
+      <%= image_tag f.object.image_url, class: "w-100" if f.object.image.present? %>
+      <%= f.hidden_field :image, value: f.object.cached_image_data %>
+      <label for="formFile" class="form-label">Add a photo of your recipe</label>
+      <%= f.file_field :image, class: "form-control", id: "formFile" %>
     </div>
     <div class="form-inputs">
       <%= f.input :title %>
