@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.page params[:page]
   end
 
   # GET /recipes/1 or /recipes/1.json
@@ -21,11 +21,10 @@ class RecipesController < ApplicationController
 
   # POST /recipes or /recipes.json
   def create
-    @recipe = Recipe.new(recipe_params)
-
+    @recipe = current_user.recipes.build(recipe_params)
     respond_to do |format|
       if @recipe.save
-        format.html { redirect_to recipe_url(@recipe), notice: "Recipe was successfully created." }
+        format.html { redirect_to recipes_url, notice: "Recipe was successfully created." }
         format.json { render :show, status: :created, location: @recipe }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -58,13 +57,14 @@ class RecipesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_recipe
-      @recipe = Recipe.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def recipe_params
-      params.require(:recipe).permit(:title, :body, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_recipe
+    @recipe = Recipe.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def recipe_params
+    params.require(:recipe).permit(:title, :body)
+  end
 end

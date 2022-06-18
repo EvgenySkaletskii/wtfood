@@ -1,11 +1,13 @@
 <div id="<%= dom_id recipe %>" class="col-6 col-sm-3 mb-3">
   <div class="card border">
-    <%= image_tag("food", class: "card-img-top")%>
-    <div class="card-body mt-2">
-      <h5><%= recipe.title %></h5>
-      <p class="text-secondary">
-        Likes: 3 | Comments: 2
-      </p>
-    </div>
+    <a href="<%= recipe_path(recipe) %>" class="text-decoration-none link-dark">
+      <%= image_tag("food", class: "card-img-top")%>
+      <div class="card-body mt-2">
+        <h5><%= recipe.title %></h5>
+        <p class="text-secondary">
+          Likes: 3 | Comments: 2
+        </p>
+      </div>
+    </a>
   </div>
 </div>
