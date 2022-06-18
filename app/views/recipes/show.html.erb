@@ -1,10 +1,21 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @recipe %>
-
-<div>
-  <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |
-  <%= link_to "Back to recipes", recipes_path %>
-
-  <%= button_to "Destroy this recipe", @recipe, method: :delete %>
+<div class="m-auto">
+  <div class="d-flex justify-content-between">
+    <%= render "back_button" %>
+    <div class="action-buttons d-flex">
+      <%= button_to "Edit", edit_recipe_path(@recipe), method: :get, class: "btn btn-primary me-3" %>
+      <%= button_to "Delete", @recipe, method: :delete, class: "btn btn-primary", form: { data: { turbo_confirm: "Are you sure?" } } %>
+    </div>
+  </div>
+  <div class ="row mt-5">
+    <div class="col-sm-8">
+      <h1 class="mb-3"><%= @recipe.title %></h1>
+      <p>Author: <%= @recipe.user.name%></p>
+      <p>Likes: 15</p>
+      <h5 class="mt-5">Description:</h5>
+      <p><%= @recipe.body%></p>
+    </div>
+    <div class="col-sm-4">
+      <%= image_tag "food", class: "w-100"%>
+    </div>
+  </div>
 </div>
