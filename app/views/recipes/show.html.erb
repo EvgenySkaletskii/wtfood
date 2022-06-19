@@ -7,17 +7,26 @@
     </div>
   </div>
   <div class ="row mt-5">
-    <div class="col-sm-6">
-      <h1 class="mb-3"><%= @recipe.title %></h1>
-      <p>Author: <%= @recipe.user.name%></p>
-      <p>Likes: 15</p>
-      <h5 class="mt-5">Description:</h5>
-      <p><%= @recipe.body%></p>
+    <div class="col-sm-7">
+      <div class="recipe-description">
+        <h1 class="mb-3"><%= @recipe.title %></h1>
+        <p>Author: <%= @recipe.user.name%></p>
+        <p>Likes: 15</p>
+        <h5 class="mt-5">Description:</h5>
+        <p><%= @recipe.body%></p>
+      </div>
     </div>
-    <div class="col-sm-6">
-      <div class="image-container rounded overflow-hidden">
+    <div class="col-sm-5">
+      <div class="image-container rounded overflow-hidden", style="max-height: 500px;">
         <%= render "recipe_image", recipe: @recipe%>
       </div>
+    </div>
+  </div>
+  <div>
+    <div class="col-sm-7 comments">
+      <h5>Comments:</h5>
+      <%= render "comments/form", recipe: @recipe%>
+      <%= render @recipe.comments%>
     </div>
   </div>
 </div>

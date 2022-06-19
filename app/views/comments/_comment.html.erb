@@ -1,0 +1,15 @@
+<div class="mb-3 border rounded p-2">
+  <div class="d-flex align-items-center mb-1 justify-content-between">
+    <div class="d-flex">
+      <span class="fw-bold"><%= comment.user.name %></span>
+      <i class="bi bi-dot text-secondary"></i>
+      <span class="text-secondary text-small"><%= time_ago_in_words(comment.created_at) %> ago</span>
+    </div>
+    <div>
+      <%= link_to comment_path(comment), class: "link-dark", data: { "turbo-method": :delete } do %>
+        <i class="bi bi-x-lg"></i>
+      <%end%>
+    </div>
+  </div>
+  <p><%= comment.body %></p>
+</div>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :recipes
+  resources :comments
   devise_for :users
   devise_scope :user do
     authenticated :user do

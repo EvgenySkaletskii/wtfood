@@ -1,0 +1,5 @@
+<%= form_with model: @comment, class: "form-inline d-flex mb-4" do |f| %>
+  <%= f.text_field :body, placeholder: "Add comment", class: "form-control me-2" %>
+  <%= f.hidden_field :recipe_id, value: recipe.id %>
+  <%= f.submit "Comment", class: "btn btn-primary" %>
+<%end%>
