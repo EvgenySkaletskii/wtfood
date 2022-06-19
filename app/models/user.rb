@@ -6,4 +6,9 @@ class User < ApplicationRecord
   validates :name, presence: true
   has_many :recipes, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+
+  def liked?(type)
+    type.likes.include?(Like.find_by(user_id: id, likeable_id: type.id))
+  end
 end

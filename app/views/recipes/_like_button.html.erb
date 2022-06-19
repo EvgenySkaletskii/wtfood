@@ -1,0 +1,11 @@
+<% unless current_user.liked?(recipe) %>
+  <%= button_to(likes_path(likeable_id: recipe.id, likeable_type: recipe.class.name), method: :post, class: "btn btn-primary me-2") do %>
+    <i class="bi bi-heart-fill"></i>
+    <span>Like</span>
+  <%end%>
+<%else%>
+  <%= button_to(like_path(recipe.likes.find_by(user_id: current_user.id)), method: :delete, class: "btn btn-primary me-2") do %>
+    <i class="bi bi-heart-fill"></i>
+    <span>Unlike</span>
+  <%end%>
+<%end%>

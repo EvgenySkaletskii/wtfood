@@ -2,8 +2,9 @@
   <div class="d-flex justify-content-between">
     <%= render "back_button" %>
     <div class="action-buttons d-flex">
+      <%= render "like_button", recipe: @recipe%>
       <% if current_user.recipes.include? @recipe %>
-        <%= button_to "Edit", edit_recipe_path(@recipe), method: :get, class: "btn btn-primary me-3" %>
+        <%= button_to "Edit", edit_recipe_path(@recipe), method: :get, class: "btn btn-primary me-2" %>
         <%= button_to "Delete", @recipe, method: :delete, class: "btn btn-primary", form: { data: { turbo_confirm: "Are you sure?" } } %>
       <%end%>
     </div>
@@ -12,7 +13,7 @@
     <div class="col-sm-7">
       <div class="recipe-description">
         <h1 class="mb-3"><%= @recipe.title %></h1>
-        <p>Author: <%= @recipe.user.name%></p>
+        <p class="text-secondary">Created by <%= @recipe.user.name%></p>
         <%= render "recipe_stats", recipe: @recipe%>
         <h5 class="mt-5">Description:</h5>
         <p><%= @recipe.body%></p>

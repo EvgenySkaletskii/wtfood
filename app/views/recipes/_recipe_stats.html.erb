@@ -1,3 +1,11 @@
-<p class="text-secondary">
-  Likes: 3 <%= comments(recipe) %>
-</p>
+<div class="text-secondary d-flex align-items-center">
+  <span class="me-2">
+    <i class="bi bi-heart-fill"></i>
+    <%= recipe.likes.count%>
+  </span>
+  <span> | </span>
+  <span class="ms-2">
+    <i class="bi bi-chat-fill"></i>
+    <%= recipe.comments.count%>
+  </span>
+</div>
