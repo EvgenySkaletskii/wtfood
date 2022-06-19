@@ -1,11 +1,9 @@
 <div id="<%= dom_id recipe %>" class="col-6 col-sm-3 mb-3">
   <div class="card border">
     <a href="<%= recipe_path(recipe) %>" class="text-decoration-none link-dark">
-      <% if recipe.image %>
-        <%= image_tag recipe.image_url, class: "w-100", style: "height: 200px; overflow: none;"%>
-      <%else%>
-        <%= image_tag "food", class: "w-100", style: "height: 200px; overflow: none;"%>
-      <%end%>
+      <div class="image-container" style="height: 200px; overflow: hidden;">
+        <%= render "recipe_image", recipe: recipe %>
+      </div>
       <div class="card-body mt-2">
         <h5><%= recipe.title %></h5>
         <p class="text-secondary">

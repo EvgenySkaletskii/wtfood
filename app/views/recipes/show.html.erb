@@ -7,14 +7,14 @@
     </div>
   </div>
   <div class ="row mt-5">
-    <div class="col-sm-8">
+    <div class="col-sm-6">
       <h1 class="mb-3"><%= @recipe.title %></h1>
       <p>Author: <%= @recipe.user.name%></p>
       <p>Likes: 15</p>
       <h5 class="mt-5">Description:</h5>
       <p><%= @recipe.body%></p>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-6">
       <% if @recipe.image %>
         <%= image_tag @recipe.image_url, class: "w-100 rounded"%>
       <%else%>
