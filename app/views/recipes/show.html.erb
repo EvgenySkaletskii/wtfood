@@ -2,8 +2,10 @@
   <div class="d-flex justify-content-between">
     <%= render "back_button" %>
     <div class="action-buttons d-flex">
-      <%= button_to "Edit", edit_recipe_path(@recipe), method: :get, class: "btn btn-primary me-3" %>
-      <%= button_to "Delete", @recipe, method: :delete, class: "btn btn-primary", form: { data: { turbo_confirm: "Are you sure?" } } %>
+      <% if current_user.recipes.include? @recipe %>
+        <%= button_to "Edit", edit_recipe_path(@recipe), method: :get, class: "btn btn-primary me-3" %>
+        <%= button_to "Delete", @recipe, method: :delete, class: "btn btn-primary", form: { data: { turbo_confirm: "Are you sure?" } } %>
+      <%end%>
     </div>
   </div>
   <div class ="row mt-5">

@@ -1,4 +1,4 @@
-<div class="mb-3 border rounded p-2">
+<div class="mb-3 border rounded p-2 ps-3">
   <div class="d-flex align-items-center mb-1 justify-content-between">
     <div class="d-flex">
       <span class="fw-bold"><%= comment.user.name %></span>
@@ -6,11 +6,13 @@
       <span class="text-secondary text-small"><%= time_ago_in_words(comment.created_at) %> ago</span>
     </div>
     <div>
-      <%= link_to edit_comment_path(comment), class: "link-dark me-2" do %>
-        <i class="bi bi-pencil-fill"></i>
-      <%end%>
-      <%= link_to comment_path(comment), class: "link-dark", data: { "turbo-method": :delete } do %>
-        <i class="bi bi-x-lg"></i>
+      <% if current_user.comments.include? comment%>
+        <%= link_to edit_comment_path(comment), class: "link-dark me-2" do %>
+          <i class="bi bi-pencil-fill"></i>
+        <%end%>
+        <%= link_to comment_path(comment), class: "link-dark", data: { "turbo-method": :delete } do %>
+          <i class="bi bi-x-lg"></i>
+        <%end%>
       <%end%>
     </div>
   </div>
