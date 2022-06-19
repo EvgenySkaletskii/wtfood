@@ -3,9 +3,11 @@
     <a href="<%= recipe_path(recipe) %>" class="text-decoration-none link-dark">
       <div class="image-container position-relative rounded overflow-hidden" style="height: 200px;">
         <%= render "recipe_image", recipe: recipe %>
-        <div class="bg-light opacity-75 position-absolute  p-2" style="top: 0; right: 0;">
-          <%= render "shared/edit_delete_buttons", model: recipe %>
-        </div>
+        <% if current_user.recipes.include? recipe %>
+          <div class="bg-light opacity-75 position-absolute  p-2" style="top: 0; right: 0;">
+            <%= render "shared/edit_delete_buttons", model: recipe %>
+          </div>
+        <%end%>
       </div>
       <div class="card-body mt-2">
         <h5><%= recipe.title %></h5>
