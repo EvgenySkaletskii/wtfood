@@ -1,0 +1,6 @@
+<%= link_to edit_polymorphic_path(model), class: "link-dark me-2" do %>
+  <i class="bi bi-pencil-fill"></i>
+<%end%>
+<%= link_to polymorphic_path(model), class: "link-dark", data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" } do %>
+  <i class="bi bi-x-lg"></i>
+<%end%>
