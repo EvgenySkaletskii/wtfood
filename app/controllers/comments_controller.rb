@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_comment, only: %i[edit, update, destroy]
+  before_action :set_comment, only: [:edit, :update, :destroy]
 
   def create
     @comment = current_user.comments.build(comment_params)
@@ -11,7 +11,15 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def update
+    if @comment.update(comment_params)
+      redirect_to recipe_path(@comment.recipe), notice: "Comment was successfully updated."
+    else
+      redirect_to edit_comment_path(@comment), alert: "Comment wasn't saved. #{@comment.errors.full_messages.first}"
+    end
   end
 
   def destroy

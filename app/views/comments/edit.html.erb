@@ -1,0 +1,5 @@
+<h1 class="mb-3">Edit comment</h1>
+<%= form_with model: @comment, class: "form-inline d-flex mb-4 w-50" do |f| %>
+  <%= f.text_field :body, placeholder: "Edit comment", class: "form-control me-2" %>
+  <%= f.submit "Comment", class: "btn btn-primary" %>
+<%end%>
