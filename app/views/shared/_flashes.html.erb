@@ -13,3 +13,8 @@
     <%= flash[:alert]  %>
   </div>
 <%end%>
+<% if flash[:session]%>
+  <div class="alert alert-success" role="alert">
+    <%= flash[:session]  %>
+  </div>
+<%end%>
