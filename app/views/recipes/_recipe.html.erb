@@ -6,9 +6,7 @@
       </div>
       <div class="card-body mt-2">
         <h5><%= recipe.title %></h5>
-        <p class="text-secondary">
-          Likes: 3 | Comments: 2
-        </p>
+        <%= render "recipe_stats", recipe: recipe%>
       </div>
     </a>
   </div>

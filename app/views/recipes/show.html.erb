@@ -13,7 +13,7 @@
       <div class="recipe-description">
         <h1 class="mb-3"><%= @recipe.title %></h1>
         <p>Author: <%= @recipe.user.name%></p>
-        <p>Likes: 15</p>
+        <%= render "recipe_stats", recipe: @recipe%>
         <h5 class="mt-5">Description:</h5>
         <p><%= @recipe.body%></p>
       </div>
