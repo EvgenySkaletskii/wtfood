@@ -1,7 +1,7 @@
 <div id="<%= dom_id recipe %>" class="col-6 col-sm-3 mb-3">
   <div class="card border">
     <a href="<%= recipe_path(recipe) %>" class="text-decoration-none link-dark">
-      <div class="image-container" style="height: 200px; overflow: hidden;">
+      <div class="image-container rounded overflow-hidden" style="height: 200px;">
         <%= render "recipe_image", recipe: recipe %>
       </div>
       <div class="card-body mt-2">

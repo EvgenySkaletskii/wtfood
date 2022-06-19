@@ -15,11 +15,9 @@
       <p><%= @recipe.body%></p>
     </div>
     <div class="col-sm-6">
-      <% if @recipe.image %>
-        <%= image_tag @recipe.image_url, class: "w-100 rounded"%>
-      <%else%>
-        <%= image_tag "food", class: "w-100 rounded"%>
-      <%end%>
+      <div class="image-container rounded overflow-hidden">
+        <%= render "recipe_image", recipe: @recipe%>
+      </div>
     </div>
   </div>
 </div>
