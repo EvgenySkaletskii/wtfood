@@ -4,6 +4,8 @@ class Recipe < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :likes, as: :likeable, dependent: :destroy
+  has_many :ingredients
+  has_many :products, through: :ingredients
 
   paginates_per 20
 
