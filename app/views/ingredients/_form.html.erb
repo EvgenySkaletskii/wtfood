@@ -7,4 +7,9 @@
     <% end %>
     <%= form.text_field :amount, placeholder: "Amount" %>
   </div>
+  <%= form.submit "delete", 
+        formaction: ingredient_path(form.index, form.object.id), 
+        formmethod: :delete, 
+        formnovalidate: true, 
+        data: { turbo_frame: "ingredient_#{form.index}" } %>
 <%end%>
