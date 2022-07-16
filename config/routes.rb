@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :ingredients, only: [], param: :index do
     member do
       delete "(:id)" => "ingredients#destroy", as: ""
+      post "/" => "ingredients#create"
     end
   end
   resources :products

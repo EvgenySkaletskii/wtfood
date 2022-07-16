@@ -21,6 +21,11 @@
       <%= f.input :body %>
     </div>
     <h4>Ingredients</h4>
+    <%= f.submit "Add ingredient", 
+      formaction: ingredient_path(@recipe.ingredients.size), 
+      formmethod: :post, 
+      formnovalidate: true, 
+      id: "add-ingredient" %>
     <div id="ingredients">
       <%= f.fields_for :ingredients do |ingredients_form| %>
         <%= render "ingredients/form", form: ingredients_form %>

@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "ingredient_#{form.index}" do %>
-  <h6>Ingredient #<%= form.index + 1%></h6>
+  <h6>Ingredient #<%= form.index.to_i + 1%></h6>
   <%= form.hidden_field :id %>
   <div>
     <%= form.fields_for :product do |product_form| %>
