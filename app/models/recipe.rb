@@ -6,7 +6,8 @@ class Recipe < ApplicationRecord
   has_many :likes, as: :likeable, dependent: :destroy
   has_many :ingredients
   has_many :products, through: :ingredients
-  accepts_nested_attributes_for :ingredients
+  accepts_nested_attributes_for :ingredients,
+    reject_if: :all_blank, allow_destroy: true
 
   paginates_per 20
 

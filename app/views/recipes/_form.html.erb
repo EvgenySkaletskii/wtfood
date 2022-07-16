@@ -21,16 +21,9 @@
       <%= f.input :body %>
     </div>
     <h4>Ingredients</h4>
-    <div>
+    <div id="ingredients">
       <%= f.fields_for :ingredients do |ingredients_form| %>
-        <%= ingredients_form.hidden_field :id %>
-        <div>
-          <%= ingredients_form.label :amount, style: "display: block" %>
-          <%= ingredients_form.text_field :amount %>
-          <%= ingredients_form.fields_for :product do |product_form| %>
-            <%= product_form.text_field :name %>
-          <% end %>
-        </div>
+        <%= render "ingredients/form", form: ingredients_form %>
       <% end %>
     </div>
     <div class="form-actions">
