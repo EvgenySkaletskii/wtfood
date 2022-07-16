@@ -1,4 +1,14 @@
 <%= simple_form_for @recipe do |f| %>
+  <% if @recipe.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this project from being saved:</h2>
+      <ul>
+        <% @recipe.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div class="w-50">
     <div class="mb-3">
       <%= image_tag f.object.image_url, class: "w-100" if f.object.image.present? %>
@@ -9,6 +19,19 @@
     <div class="form-inputs">
       <%= f.input :title %>
       <%= f.input :body %>
+    </div>
+    <h4>Ingredients</h4>
+    <div>
+      <%= f.fields_for :ingredients do |ingredients_form| %>
+        <%= ingredients_form.hidden_field :id %>
+        <div>
+          <%= ingredients_form.label :amount, style: "display: block" %>
+          <%= ingredients_form.text_field :amount %>
+          <%= ingredients_form.fields_for :product do |product_form| %>
+            <%= product_form.text_field :name %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
     <div class="form-actions">
       <%= f.button :submit %>
