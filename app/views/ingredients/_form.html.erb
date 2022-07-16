@@ -1,15 +1,14 @@
 <%= turbo_frame_tag "ingredient_#{form.index}" do %>
-  <h6>Ingredient #<%= form.index.to_i + 1%></h6>
   <%= form.hidden_field :id %>
-  <div>
-    <%= form.fields_for :product do |product_form| %>
-      <%= product_form.text_field :name, placeholder: "Name" %>
-    <% end %>
-    <%= form.text_field :amount, placeholder: "Amount" %>
-  </div>
-  <%= form.submit "delete", 
+  <%= form.simple_fields_for :product do |product_form| %>
+    <%= product_form.input :name, placeholder: "Name", label: false, input_html: {class: "w-100"} %>
+  <% end %>
+  <%= form.input :amount, placeholder: "Amount", label: false %>
+  <%= form.submit "Delete", 
         formaction: ingredient_path(form.index, form.object.id), 
         formmethod: :delete, 
         formnovalidate: true, 
-        data: { turbo_frame: "ingredient_#{form.index}" } %>
+        data: { turbo_frame: "ingredient_#{form.index}", disable_with: false },
+        class: "btn btn-outline-danger"%>
+  <hr>
 <%end%>

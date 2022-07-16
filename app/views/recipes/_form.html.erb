@@ -1,14 +1,4 @@
 <%= simple_form_for @recipe do |f| %>
-  <% if @recipe.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this project from being saved:</h2>
-      <ul>
-        <% @recipe.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
   <div class="w-50">
     <div class="mb-3">
       <%= image_tag f.object.image_url, class: "w-100" if f.object.image.present? %>
@@ -20,14 +10,17 @@
       <%= f.input :title %>
       <%= f.input :body %>
     </div>
-    <h4>Ingredients</h4>
-    <%= f.submit "Add ingredient", 
+    <div class="d-flex justify-content-between mt-5">
+      <h4>Ingredients</h4>
+      <%= f.submit "Add ingredient", 
       formaction: ingredient_path(@recipe.ingredients.size), 
       formmethod: :post, 
       formnovalidate: true, 
-      id: "add-ingredient" %>
-    <div id="ingredients">
-      <%= f.fields_for :ingredients do |ingredients_form| %>
+      id: "add-ingredient",
+      class: "btn btn-primary" %>
+    </div>
+    <div id="ingredients" class="my-3">
+      <%= f.simple_fields_for :ingredients do |ingredients_form| %>
         <%= render "ingredients/form", form: ingredients_form %>
       <% end %>
     </div>
