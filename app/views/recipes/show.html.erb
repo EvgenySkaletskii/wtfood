@@ -16,7 +16,13 @@
         <p class="text-secondary">Created by <%= @recipe.user.name%></p>
         <%= render "recipe_stats", recipe: @recipe%>
         <h5 class="mt-5">Description:</h5>
-        <p><%= @recipe.body%></p>
+        <%= simple_format(@recipe.body) %>
+      </div>
+      <div class="recipe-ingredients mb-5">
+        <h5>Ingredients</h5>
+        <% @recipe.ingredients.each do |i| %>
+          <%= i.product.name %> - <%= i.amount%><br>
+        <%end%>
       </div>
     </div>
     <div class="col-sm-5">
