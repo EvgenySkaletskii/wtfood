@@ -9,10 +9,20 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :ingredients,
     reject_if: :all_blank, allow_destroy: true
 
+  before_save :find_or_create_products
+
   paginates_per 20
 
   validates :title, presence: true, length: { maximum: 40 }
   validates :body, presence: true, length: { maximum: 200 }
 
   default_scope -> { order(created_at: :desc) }
+
+  private
+
+  def find_or_create_products
+    self.ingredients.each do |ingredient|
+      ingredient.product = Product.find_or_create_by(name: ingredient.product.name)
+    end
+  end
 end
