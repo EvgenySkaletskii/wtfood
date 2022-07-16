@@ -19,7 +19,7 @@
         <%= simple_format(@recipe.body) %>
       </div>
       <div class="recipe-ingredients mb-5">
-        <h5>Ingredients</h5>
+        <h5>Ingredients:</h5>
         <% @recipe.ingredients.each do |i| %>
           <%= i.product.name %> - <%= i.amount%><br>
         <%end%>
