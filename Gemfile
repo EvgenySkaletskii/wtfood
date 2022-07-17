@@ -67,9 +67,13 @@ group :development, :test do
   gem "selenium-webdriver", "~> 4.3"
   gem "factory_bot_rails", "~> 6.2"
   gem "faker", "~> 2.21"
-  gem "database_cleaner", "~> 2.0", ">= 2.0.1"
 end
 
 group :development do
   gem "web-console"
+end
+
+group :test do
+  gem "shoulda-matchers", "~> 5.1"
+  gem "database_cleaner", "~> 2.0", ">= 2.0.1"
 end
