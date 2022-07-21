@@ -74,6 +74,7 @@ GEM
       msgpack (~> 1.2)
     builder (3.2.4)
     concurrent-ruby (1.1.10)
+    connection_pool (2.2.5)
     content_disposition (1.0.0)
     crass (1.0.6)
     cssbundling-rails (1.1.0)
@@ -186,6 +187,7 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
+    redis (4.7.1)
     reline (0.3.1)
       io-console (~> 0.5)
     responders (3.0.1)
@@ -196,6 +198,10 @@ GEM
     shrine (3.4.0)
       content_disposition (~> 1.0)
       down (~> 5.1)
+    sidekiq (6.5.1)
+      connection_pool (>= 2.2.2)
+      rack (~> 2.0)
+      redis (>= 4.2.0)
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -246,7 +252,9 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.3)
+  redis
   shrine (~> 3.4)
+  sidekiq
   simple_form
   sprockets-rails
   stimulus-rails
