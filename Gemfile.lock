@@ -92,6 +92,10 @@ GEM
     devise-i18n (1.10.2)
       devise (>= 4.8.0)
     digest (3.1.0)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     down (5.3.1)
       addressable (~> 2.8)
     erubi (1.10.0)
@@ -245,6 +249,7 @@ DEPENDENCIES
   devise
   devise-bootstrap-views (~> 1.0)
   devise-i18n
+  dotenv-rails
   image_processing (~> 1.12, >= 1.12.2)
   jbuilder
   jsbundling-rails
