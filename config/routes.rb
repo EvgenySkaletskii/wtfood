@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   resources :likes, only: [:create, :destroy]
   resources :recipes
@@ -18,6 +20,9 @@ Rails.application.routes.draw do
     unauthenticated do
       root "devise/sessions#new", as: :unauthenticated_root
     end
+  end
+  authenticate :user, lambda { |u| u.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
   end
   get "home/index"
   root "home#index"

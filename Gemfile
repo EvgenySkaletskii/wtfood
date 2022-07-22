@@ -60,6 +60,9 @@ gem "kaminari"
 gem "shrine", "~> 3.4"
 gem "image_processing", "~> 1.12", ">= 1.12.2"
 
+gem 'sidekiq'
+gem 'redis'
+
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "rspec-rails", "~> 6.0.0.rc1"
@@ -67,6 +70,7 @@ group :development, :test do
   gem "selenium-webdriver", "~> 4.3"
   gem "factory_bot_rails", "~> 6.2"
   gem "faker", "~> 2.21"
+  gem 'dotenv-rails'
 end
 
 group :development do

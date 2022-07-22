@@ -84,6 +84,7 @@ GEM
       xpath (~> 3.2)
     childprocess (4.1.0)
     concurrent-ruby (1.1.10)
+    connection_pool (2.2.5)
     content_disposition (1.0.0)
     crass (1.0.6)
     cssbundling-rails (1.1.0)
@@ -108,6 +109,10 @@ GEM
       devise (>= 4.8.0)
     diff-lcs (1.5.0)
     digest (3.1.0)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     down (5.3.1)
       addressable (~> 2.8)
     erubi (1.10.0)
@@ -212,6 +217,7 @@ GEM
       zeitwerk (~> 2.5)
     rake (13.0.6)
     regexp_parser (2.5.0)
+    redis (4.7.1)
     reline (0.3.1)
       io-console (~> 0.5)
     responders (3.0.1)
@@ -248,6 +254,10 @@ GEM
     shrine (3.4.0)
       content_disposition (~> 1.0)
       down (~> 5.1)
+    sidekiq (6.5.1)
+      connection_pool (>= 2.2.2)
+      rack (~> 2.0)
+      redis (>= 4.2.0)
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -296,8 +306,12 @@ DEPENDENCIES
   devise
   devise-bootstrap-views (~> 1.0)
   devise-i18n
+<<<<<<< HEAD
   factory_bot_rails (~> 6.2)
   faker (~> 2.21)
+=======
+  dotenv-rails
+>>>>>>> master
   image_processing (~> 1.12, >= 1.12.2)
   jbuilder
   jsbundling-rails
@@ -305,10 +319,15 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.3)
+<<<<<<< HEAD
   rspec-rails (~> 6.0.0.rc1)
   selenium-webdriver (~> 4.3)
   shoulda-matchers (~> 5.1)
+=======
+  redis
+>>>>>>> master
   shrine (~> 3.4)
+  sidekiq
   simple_form
   sprockets-rails
   stimulus-rails
