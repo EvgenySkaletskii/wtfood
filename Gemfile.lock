@@ -306,12 +306,9 @@ DEPENDENCIES
   devise
   devise-bootstrap-views (~> 1.0)
   devise-i18n
-<<<<<<< HEAD
   factory_bot_rails (~> 6.2)
   faker (~> 2.21)
-=======
   dotenv-rails
->>>>>>> master
   image_processing (~> 1.12, >= 1.12.2)
   jbuilder
   jsbundling-rails
@@ -319,13 +316,10 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.3)
-<<<<<<< HEAD
   rspec-rails (~> 6.0.0.rc1)
   selenium-webdriver (~> 4.3)
   shoulda-matchers (~> 5.1)
-=======
   redis
->>>>>>> master
   shrine (~> 3.4)
   sidekiq
   simple_form
