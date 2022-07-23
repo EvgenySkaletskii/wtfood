@@ -7,7 +7,7 @@ FactoryBot.define do
     end
 
     trait :for_comment do
-      association :likeable, factory: :comments
+      association :likeable, factory: :comment
     end
   end
 end

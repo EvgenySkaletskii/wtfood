@@ -14,9 +14,33 @@ RSpec.describe User, type: :model do
   end
 
   describe "liked? method" do
-    context "posts" do
-      it "returns true when post is liked by user" do
-        user = create(:user)
+    context "recipes" do
+      let(:like) { create(:like, :for_recipe) }
+      let(:user_who_liked) { like.user }
+      let(:user) { create(:user) }
+      let(:recipe) { like.likeable }
+
+      it "returns true when recipe is liked by user" do
+        expect(user_who_liked.liked?(recipe)).to be true
+      end
+
+      it "returns false when recipe is not liked by user" do
+        expect(user.liked?(recipe)).to be false
+      end
+    end
+
+    context "comments" do
+      let(:like) { create(:like, :for_comment) }
+      let(:user_who_liked) { like.user }
+      let(:user) { create(:user) }
+      let(:comment) { like.likeable }
+
+      it "returns true when comment is liked by user" do
+        expect(user_who_liked.liked?(comment)).to be true
+      end
+
+      it "returns false when recipe is not liked by user" do
+        expect(user.liked?(comment)).to be false
       end
     end
   end
