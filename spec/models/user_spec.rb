@@ -12,4 +12,12 @@ RSpec.describe User, type: :model do
     it { should have_many(:comments) }
     it { should have_many(:likes) }
   end
+
+  describe "liked? method" do
+    context "posts" do
+      it "returns true when post is liked by user" do
+        user = create(:user)
+      end
+    end
+  end
 end
