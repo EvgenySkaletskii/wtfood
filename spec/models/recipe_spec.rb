@@ -19,4 +19,26 @@ RSpec.describe Recipe, type: :model do
   describe "nested attributes" do
     it { should accept_nested_attributes_for(:ingredients) }
   end
+
+  describe "find_or_create_products" do
+    it "should create a new product when it doesn't exist" do
+      ingredient = build(:ingredient)
+      recipe = build(:recipe)
+      product = build(:product)
+
+      ingredient.recipe = recipe
+      ingredient.product = product
+      expect { ingredient.save }.to change { Product.count }.by(1)
+    end
+
+    it "should not create a new product when it already exists" do
+      ingredient = build(:ingredient)
+      recipe = build(:recipe)
+      product = create(:product)
+
+      ingredient.recipe = recipe
+      ingredient.product = product
+      expect { ingredient.save }.to change { Product.count }.by(0)
+    end
+  end
 end
