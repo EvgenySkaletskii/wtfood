@@ -22,23 +22,15 @@ RSpec.describe Recipe, type: :model do
 
   describe "find_or_create_products" do
     it "should create a new product when it doesn't exist" do
-      ingredient = build(:ingredient)
-      recipe = build(:recipe)
-      product = build(:product)
-
-      ingredient.recipe = recipe
-      ingredient.product = product
-      expect { ingredient.save }.to change { Product.count }.by(1)
+      recipe = build(:recipe_with_ingredients)
+      expect { recipe.save }.to change { Product.count }.by(1)
     end
 
     it "should not create a new product when it already exists" do
-      ingredient = build(:ingredient)
-      recipe = build(:recipe)
-      product = create(:product)
-
-      ingredient.recipe = recipe
-      ingredient.product = product
-      expect { ingredient.save }.to change { Product.count }.by(0)
+      recipe = build(:recipe_with_ingredients)
+      product = recipe.ingredients.first.product
+      product.save
+      expect { recipe.save }.to change { Product.count }.by(0)
     end
   end
 end

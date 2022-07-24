@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :ingredient do
     amount { Faker::Food.measurement }
+    product
   end
 end
