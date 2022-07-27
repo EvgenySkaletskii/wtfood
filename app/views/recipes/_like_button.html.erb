@@ -1,4 +1,4 @@
-<% unless current_user.liked?(recipe) %>
+<% unless current_user.liked?(recipe.id) %>
   <%= button_to(likes_path(likeable_id: recipe.id, likeable_type: recipe.class.name), method: :post, class: "btn btn-primary me-2") do %>
     <i class="bi bi-heart-fill"></i>
     <span>Like</span>

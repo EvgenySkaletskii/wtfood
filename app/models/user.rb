@@ -8,8 +8,12 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  def liked?(type)
-    type.likes.include?(Like.find_by(user_id: id, likeable_id: type.id))
+  # def liked?(type)
+  #   type.likes.include?(Like.find_by(user_id: id, likeable_id: type.id))
+  # end
+
+  def liked?(likeable_id)
+    likes.include?(Like.find_by(user_id: id, likeable_id: likeable_id))
   end
 
   def send_devise_notification(notification, *args)

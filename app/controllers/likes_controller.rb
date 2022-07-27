@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
   def create
-    if current_user.likes.include?(Like.find_by(user_id: current_user.id, likeable_id: params[:likeable_id]))
+    if current_user.liked?(params[:likeable_id])
       render json: {"error_message": "Stop using API calls you little bastard!"}, status: :forbidden
     else
       current_user.likes.create(like_params)
@@ -10,7 +10,7 @@ class LikesController < ApplicationController
 
   def destroy
     @like = Like.find(params[:id])
-    if current_user.likes.include?(@like)
+    if current_user.liked?(@like.likeable_id)
       @like.destroy
       redirect_to request.referrer, status: :see_other
     else

@@ -1,4 +1,4 @@
-<% unless current_user.liked?(comment) %>
+<% unless current_user.liked?(comment.id) %>
   <%= link_to(likes_path(likeable_id: comment.id, likeable_type: comment.class.name), data: { "turbo-method": :post }, class: "me-1") do %>
     <i class="bi bi-heart link-dark"></i>
   <%end%>
