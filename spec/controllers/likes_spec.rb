@@ -54,7 +54,7 @@ RSpec.describe LikesController, type: :controller do
     end
 
     context "destroying not your like" do
-      it "should not destory like" do
+      it "should not destroy like" do
         another_user = create(:user)
         another_recipe = create(:recipe, user: user)
         like = create(:like, user: another_user, likeable_id: another_recipe.id, likeable_type: "Recipe")
