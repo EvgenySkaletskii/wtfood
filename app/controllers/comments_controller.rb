@@ -5,9 +5,9 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.build(comment_params)
     if @comment.save
-      redirect_to request.referrer, notice: "Comment was successfully added."
+      redirect_to recipe_path(@comment.recipe), notice: "Comment was successfully added."
     else
-      redirect_to request.referrer, alert: "Comment wasn't saved. #{@comment.errors.full_messages.first}"
+      redirect_to recipe_path(@comment.recipe), alert: "Comment wasn't saved. #{@comment.errors.full_messages.first}"
     end
   end
 
@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-    redirect_to request.referrer, status: :see_other, notice: "Comment was successfully deleted."
+    redirect_to recipe_path(@comment.recipe), status: :see_other, notice: "Comment was successfully deleted."
   end
 
   private
