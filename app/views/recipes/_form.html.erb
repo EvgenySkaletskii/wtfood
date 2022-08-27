@@ -1,31 +1,29 @@
 <%= simple_form_for @recipe do |f| %>
-  <div class="w-50">
-    <div class="mb-3">
-      <%= image_tag f.object.image_url, class: "w-100" if f.object.image.present? %>
-      <%= f.hidden_field :image, value: f.object.cached_image_data %>
-      <label for="formFile" class="form-label">Add a photo of your recipe</label>
-      <%= f.file_field :image, class: "form-control", id: "formFile" %>
-    </div>
-    <div class="form-inputs">
-      <%= f.input :title %>
-      <%= f.input :body %>
-    </div>
-    <div class="d-flex justify-content-between mt-5">
-      <h4>Ingredients</h4>
-      <%= f.submit "Add ingredient", 
+  <div class="mb-3">
+    <%= image_tag f.object.image_url, class: "w-100" if f.object.image.present? %>
+    <%= f.hidden_field :image, value: f.object.cached_image_data %>
+    <label for="formFile" class="form-label">Add a photo of your recipe</label>
+    <%= f.file_field :image, class: "form-control", id: "formFile" %>
+  </div>
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :body %>
+  </div>
+  <div class="d-flex justify-content-between mt-5">
+    <h4>Ingredients</h4>
+    <%= f.submit "Add ingredient", 
       formaction: ingredient_path(@recipe.ingredients.size), 
       formmethod: :post, 
       formnovalidate: true, 
       id: "add-ingredient",
       class: "btn btn-primary" %>
-    </div>
-    <div id="ingredients" class="my-3">
-      <%= f.simple_fields_for :ingredients do |ingredients_form| %>
-        <%= render "ingredients/form", form: ingredients_form %>
-      <% end %>
-    </div>
-    <div class="form-actions">
-      <%= f.button :submit %>
-    </div>
+  </div>
+  <div id="ingredients" class="my-3">
+    <%= f.simple_fields_for :ingredients do |ingredients_form| %>
+      <%= render "ingredients/form", form: ingredients_form %>
+    <% end %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit %>
   </div>
 <% end %>
