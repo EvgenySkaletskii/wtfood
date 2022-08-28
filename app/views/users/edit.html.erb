@@ -1,0 +1,18 @@
+<div class="w-50 m-auto">
+  <%= render "recipes/back_button" %>
+  <h1>Edit profile</h1>
+  <%= simple_form_for(@user,  method: :put ) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :name %>
+      <%= f.input :email %>
+      <%= f.input :password, hint: "Enter password and password confirmation to save changes" %>
+      <%= f.input :password_confirmation %>
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit, "Save changes" %>
+    </div>
+  <% end %>
+  <div>
+    <%= link_to "Delete my account", user_path(@user), data: { "turbo-method": :delete, turbo_confirm: "All your recipes, comments, and likes will be destroyed" } %>
+  </div>
+</div>

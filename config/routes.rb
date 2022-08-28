@@ -1,6 +1,7 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
+  resources :users, only: [:edit, :update]
   resources :likes, only: [:create, :destroy]
   resources :recipes
   resources :ingredients, only: [], param: :index do
