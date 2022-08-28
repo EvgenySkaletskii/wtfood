@@ -1,4 +1,4 @@
-require 'sidekiq/web'
+require "sidekiq/web"
 
 Rails.application.routes.draw do
   resources :likes, only: [:create, :destroy]
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     end
   end
   authenticate :user, lambda { |u| u.admin? } do
-    mount Sidekiq::Web => '/sidekiq'
+    mount Sidekiq::Web => "/sidekiq"
   end
   get "home/index"
   root "home#index"

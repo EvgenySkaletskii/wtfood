@@ -38,15 +38,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  protected
-
-  def layout_for_action
-    if params[:action] == "edit" # See what the action is called internally beforehand
-      "application"
-    else
-      "devise"
-    end
-  end
+  #protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
