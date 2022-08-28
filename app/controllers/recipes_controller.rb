@@ -48,6 +48,10 @@ class RecipesController < ApplicationController
     redirect_to recipes_url, notice: "Recipe was successfully destroyed."
   end
 
+  def random
+    redirect_to recipe_path(Recipe.random)
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

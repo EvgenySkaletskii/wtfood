@@ -27,4 +27,5 @@ Rails.application.routes.draw do
   end
   get "home/index"
   root "home#index"
+  get "/random", to: "recipes#random"
 end

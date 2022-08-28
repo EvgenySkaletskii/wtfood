@@ -17,6 +17,7 @@ class Recipe < ApplicationRecord
   validates :body, presence: true, length: { maximum: 200 }
 
   default_scope -> { order(created_at: :desc) }
+  scope :random, -> { offset(rand(Recipe.count)).first }
 
   private
 
