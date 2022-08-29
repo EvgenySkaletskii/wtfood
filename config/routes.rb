@@ -3,7 +3,12 @@ require "sidekiq/web"
 Rails.application.routes.draw do
   resources :users, only: [:edit, :update]
   resources :likes, only: [:create, :destroy]
-  resources :recipes
+  resources :recipes do
+    collection do
+      get "random"
+      get "favorite"
+    end
+  end
   resources :ingredients, only: [], param: :index do
     member do
       delete "(:id)" => "ingredients#destroy", as: ""
@@ -27,5 +32,4 @@ Rails.application.routes.draw do
   end
   get "home/index"
   root "home#index"
-  get "/random", to: "recipes#random"
 end

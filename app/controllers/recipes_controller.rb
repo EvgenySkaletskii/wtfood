@@ -52,6 +52,11 @@ class RecipesController < ApplicationController
     redirect_to recipe_path(Recipe.random)
   end
 
+  def favorite
+    #@recipes = current_user.likes.where(likeable_type: "Recipe")
+    #@recipes = Recipe.where()
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
