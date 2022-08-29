@@ -2,6 +2,7 @@
   <div class="d-flex justify-content-between">
     <%= render "back_button" %>
     <div class="action-buttons d-flex">
+      <%= render "shared/random_button" %>
       <%= render "like_button", recipe: @recipe%>
       <% if current_user.recipes.include? @recipe %>
         <%= button_to "Edit", edit_recipe_path(@recipe), method: :get, class: "btn btn-primary me-2" %>
