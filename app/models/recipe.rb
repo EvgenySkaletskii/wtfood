@@ -18,6 +18,7 @@ class Recipe < ApplicationRecord
 
   default_scope -> { order(created_at: :desc) }
   scope :random, -> { offset(rand(Recipe.count)).take }
+  scope :favorite, -> (user) { joins(:likes).where(likes: {user_id: user.id}) }
 
   private
 

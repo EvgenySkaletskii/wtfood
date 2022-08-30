@@ -53,8 +53,7 @@ class RecipesController < ApplicationController
   end
 
   def favorite
-    liked_ids = current_user.likes.where(likeable_type: "Recipe").pluck(:likeable_id)
-    @recipes = Recipe.where(id: liked_ids).page params[:page]
+    @recipes = Recipe.favorite(current_user).page params[:page]
   end
 
   private
