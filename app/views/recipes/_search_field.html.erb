@@ -1,7 +1,7 @@
 <div class = "search mb-5">
   <%= search_form_for @q, class: "d-flex" do |f| %>
     <div class="input-group  me-3" style="width:400px">
-      <%= f.text_field :title_or_ingredients_product_name_cont, placeholder: "Search for recipes...", class: "form-control shadow-none" %>
+      <%= f.text_field :title_or_ingredients_product_name_cont, placeholder: "Search for recipes...", class: "form-control shadow-none", autocomplete: "off" %>
       <% if @show_clear %>
         <%= link_to "Clear", request.path, class: "btn btn-outline-danger" %>
       <% end %>
