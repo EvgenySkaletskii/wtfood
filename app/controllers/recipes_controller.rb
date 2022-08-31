@@ -55,7 +55,10 @@ class RecipesController < ApplicationController
   end
 
   def favorite
-    @recipes = Recipe.favorite(current_user).page params[:page]
+    @show_clear = true unless params[:q].blank?
+    @favorite = Recipe.favorite(current_user)
+    @q = @favorite.ransack(params[:q])
+    @recipes = @q.result(distinct: true).page(params[:page])
   end
 
   private
