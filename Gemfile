@@ -63,6 +63,8 @@ gem "image_processing", "~> 1.12", ">= 1.12.2"
 gem "sidekiq"
 gem "redis"
 
+gem 'ransack'
+
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "rspec-rails", "~> 6.0.0.rc1"

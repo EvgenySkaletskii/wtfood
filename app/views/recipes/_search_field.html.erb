@@ -1,0 +1,6 @@
+<div class = "search mb-5">
+  <%= search_form_for @q, class: "d-flex" do |f| %>
+    <%= f.search_field :title_cont, class: "form-control me-3", style: "width:300px" %>
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+</div>

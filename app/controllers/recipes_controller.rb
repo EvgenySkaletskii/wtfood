@@ -4,7 +4,8 @@ class RecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
-    @recipes = Recipe.page params[:page]
+    @q = Recipe.ransack(params[:q])
+    @recipes = @q.result(distinct: true).page(params[:page])
   end
 
   # GET /recipes/1 or /recipes/1.json
