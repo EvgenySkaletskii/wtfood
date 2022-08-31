@@ -1,6 +1,9 @@
 <div class = "search mb-5">
   <%= search_form_for @q, class: "d-flex" do |f| %>
-    <%= f.search_field :title_or_ingredients_product_name_cont, placeholder: "Search for recipes...", class: "form-control me-3", style: "width:300px" %>
-    <%= f.submit class: "btn btn-primary" %>
+    <div class="input-group  me-3" style="width:400px">
+      <%= f.search_field :title_or_ingredients_product_name_cont, placeholder: "Search for recipes...", class: "form-control shadow-none" %>
+      <%= link_to "Clear", request.path, class: "btn btn-outline-secondary" %>
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
   <% end %>
 </div>
