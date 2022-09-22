@@ -1,10 +1,13 @@
-<div class="d-flex justify-content-between mb-5">
+<div class="d-flex justify-content-between mb-3">
   <h1>Recipes</h1>
   <div class="d-flex align-items-center">
     <%= render "shared/random_button" %>
     <%= button_to "New recipe", new_recipe_path, method: :get, class: "btn btn-primary me-3" %>
   </div>
 </div>
+
+<%= render "search_field", path: recipes_path %>
+
 <div id="recipes" class="row">
   <%= render @recipes %>
 </div>

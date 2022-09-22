@@ -1,8 +1,11 @@
-<div class="d-flex justify-content-between mb-5">
+<div class="d-flex justify-content-between mb-3">
   <h1>Favorite recipes</h1>
   <div class="d-flex align-items-center">
   </div>
 </div>
+
+<%= render "search_field", path: favorite_recipes_path %>
+
 <div id="recipes" class="row">
   <%= render @recipes %>
 </div>
