@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class IngredientsController < ApplicationController
   before_action :set_ingredient
 
@@ -9,8 +11,8 @@ class IngredientsController < ApplicationController
 
   private
 
-  def set_ingredient
-    @recipe = Recipe.new
-    @recipe.ingredients.build.build_product
-  end
+    def set_ingredient
+      @recipe = Recipe.new
+      @recipe.ingredients.build.build_product
+    end
 end

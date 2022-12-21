@@ -1,0 +1,8 @@
+{
+    // rest of the keys as it was
+  "folders": [],
+  "settings": {},
+  "[javascript]": {
+    "editor.formatOnSave": true
+  }
+}

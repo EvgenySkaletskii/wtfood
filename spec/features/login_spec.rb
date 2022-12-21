@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 RSpec.feature "Login", type: :feature do
@@ -16,7 +18,7 @@ RSpec.feature "Login", type: :feature do
       login_page.submit_button.click
       expect(page).to have_text "Signed in successfully."
       expect(recipes_page).to have_recipes
-      #user can logout
+      # user can logout
       recipes_page.logout_button.click
       expect(page).to have_text "Signed out successfully."
       expect(login_page).to have_email_field

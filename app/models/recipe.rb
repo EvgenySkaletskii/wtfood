@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Recipe < ApplicationRecord
   include ImageUploader::Attachment(:image)
 
@@ -18,13 +20,13 @@ class Recipe < ApplicationRecord
 
   default_scope -> { order(created_at: :desc) }
   scope :random, -> { offset(rand(Recipe.count)).take }
-  scope :favorite, -> (user) { joins(:likes).where(likes: {user_id: user.id}) }
+  scope :favorite, -> (user) { joins(:likes).where(likes: { user_id: user.id }) }
 
   private
 
-  def find_or_create_products
-    self.ingredients.each do |ingredient|
-      ingredient.product = Product.find_or_create_by(name: ingredient.product.name)
+    def find_or_create_products
+      self.ingredients.each do |ingredient|
+        ingredient.product = Product.find_or_create_by(name: ingredient.product.name)
+      end
     end
-  end
 end

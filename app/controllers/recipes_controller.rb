@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RecipesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_recipe, only: %i[ show edit update destroy ]
@@ -50,6 +52,7 @@ class RecipesController < ApplicationController
     redirect_to recipes_url, notice: "Recipe was successfully destroyed."
   end
 
+  # TO-DO #move to RandomRecipesController
   def random
     redirect_to recipe_path(Recipe.random)
   end
@@ -63,13 +66,15 @@ class RecipesController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_recipe
-    @recipe = Recipe.find(params[:id])
-  end
+    # Use callbacks to share common setup or constraints between actions.
+    def set_recipe
+      @recipe = Recipe.find(params[:id])
+    end
 
-  # Only allow a list of trusted parameters through.
-  def recipe_params
-    params.require(:recipe).permit(:title, :body, :image, ingredients_attributes: [:id, :amount, :_destroy, product_attributes: [:name]])
-  end
+    # Only allow a list of trusted parameters through.
+    def recipe_params
+      params.require(:recipe).permit(
+        :title, :body, :image,
+        ingredients_attributes: [:id, :amount, :_destroy, product_attributes: [:name]])
+    end
 end

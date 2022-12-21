@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 RSpec.describe ProductsController, type: :controller do
-  let(:user) { create(:user)}
+  let(:user) { create(:user) }
 
   before(:each) do
     sign_in(user)
@@ -10,7 +12,7 @@ RSpec.describe ProductsController, type: :controller do
   describe "POST #create" do
     it "should create a new product" do
       expect do
-        post :create, params: {product: attributes_for(:product, user: user)}
+        post :create, params: { product: attributes_for(:product, user:) }
       end.to change(Product, :count).by(1)
     end
   end

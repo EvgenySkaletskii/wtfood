@@ -1,10 +1,12 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe CommentsController, type: :controller do
 
   let(:user) { create(:user) }
-  let(:recipe) { create(:recipe, user: user) }
-  let!(:comment) { create(:comment, user: user, recipe: recipe )}
+  let(:recipe) { create(:recipe, user:) }
+  let!(:comment) { create(:comment, user:, recipe:) }
 
   before(:each) do
     sign_in(user)

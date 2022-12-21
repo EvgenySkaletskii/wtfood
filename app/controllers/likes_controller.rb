@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class LikesController < ApplicationController
   def create
     if current_user.liked?(params[:likeable_id])
-      render json: {"error_message": "Stop using API calls you little bastard!"}, status: :forbidden
+      render json: { "error_message": "Stop using API calls you little bastard!" }, status: :forbidden
     else
       current_user.likes.create(like_params)
       redirect_to request.referrer
@@ -14,13 +16,13 @@ class LikesController < ApplicationController
       @like.destroy
       redirect_to request.referrer, status: :see_other
     else
-      render json: {"error_message": "Stop using API calls you little bastard!"}, status: :forbidden
+      render json: { "error_message": "Stop using API calls you little bastard!" }, status: :forbidden
     end
   end
 
   private
 
-  def like_params
-    params.permit(:likeable_id, :likeable_type)
-  end
+    def like_params
+      params.permit(:likeable_id, :likeable_type)
+    end
 end

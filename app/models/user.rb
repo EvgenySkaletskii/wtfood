@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+    :recoverable, :rememberable, :validatable
   validates :name, presence: true
   validates :email, presence: true
   validates :password, presence: true, length: { minimum: 8 }
@@ -15,7 +17,7 @@ class User < ApplicationRecord
   # end
 
   def liked?(likeable_id)
-    likes.include?(Like.find_by(user_id: id, likeable_id: likeable_id))
+    likes.include?(Like.find_by(user_id: id, likeable_id:))
   end
 
   def send_devise_notification(notification, *args)

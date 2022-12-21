@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -51,29 +53,31 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 gem "devise"
-gem "devise-i18n"
 gem "devise-bootstrap-views", "~> 1.0"
+gem "devise-i18n"
 
-gem "simple_form"
 gem "kaminari"
+gem "simple_form"
 
-gem "shrine", "~> 3.4"
 gem "image_processing", "~> 1.12", ">= 1.12.2"
+gem "shrine", "~> 3.4"
 
-gem "sidekiq"
 gem "redis"
+gem "sidekiq"
 
-gem 'ransack'
+gem "ransack"
 
 group :development, :test do
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
-  gem "rspec-rails", "~> 6.0.0.rc1"
   gem "capybara", "~> 3.37", ">= 3.37.1"
-  gem "selenium-webdriver", "~> 4.3"
-  gem "site_prism"
+  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "dotenv-rails"
   gem "factory_bot_rails", "~> 6.2"
   gem "faker", "~> 2.21"
-  gem "dotenv-rails"
+  gem "rspec-rails", "~> 6.0.0.rc1"
+  gem "rubocop"
+  gem "rubocop-rails"
+  gem "selenium-webdriver", "~> 4.3"
+  gem "site_prism"
 end
 
 group :development do
@@ -81,6 +85,6 @@ group :development do
 end
 
 group :test do
-  gem "shoulda-matchers", "~> 5.1"
   gem "database_cleaner", "~> 2.0", ">= 2.0.1"
+  gem "shoulda-matchers", "~> 5.1"
 end

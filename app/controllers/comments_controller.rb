@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_comment, only: [:edit, :update, :destroy]
@@ -29,11 +31,11 @@ class CommentsController < ApplicationController
 
   private
 
-  def set_comment
-    @comment = Comment.find(params[:id])
-  end
+    def set_comment
+      @comment = Comment.find(params[:id])
+    end
 
-  def comment_params
-    params.require(:comment).permit(:body, :recipe_id)
-  end
+    def comment_params
+      params.require(:comment).permit(:body, :recipe_id)
+    end
 end
